@@ -42,12 +42,15 @@ class NN:
         self.vGamma = dict(); self.rGamma = dict(); self.vBeta = dict(); self.rBeta = dict(); 
         self.sGamma = dict(); self.sBeta = dict(); self.W_grad = dict(); self.b_grad = dict(); self.delta = dict()
         self.Gamma_grad = dict(); self.Beta_grad = dict()
-        
+
+        # 为每一层神经网络赋初值 
+        # parameters initialization
         for k in range(self.depth - 1):
             width = self.size[k]
             height = self.size[k + 1]
             self.W[k] = 2 * np.random.rand(height, width) / np.sqrt(width) - 1 / np.sqrt(width)
 
+            # activation function
             if self.active_function == 'relu':
                 self.b[k] = np.random.rand(height, 1) + 0.01
             else:

@@ -27,15 +27,15 @@ def load_variable(filename):
     return r
 
 #Training
-dir_path = 'D:\\datasets\\MNIST\\train'
+dir_path = '/home/wzc/nas/home/Dataset/MNIST/train'
 file_ls = os.listdir(dir_path)
 data = np.zeros((60000, 784), dtype=float)
 label = np.zeros((60000, 10), dtype=float)
 flag = 0
 for dir in file_ls:
-    files = os.listdir(dir_path+'\\'+dir)
+    files = os.listdir(dir_path+'/'+dir)
     for file in files:
-        filename = dir_path+'\\'+dir+'\\'+file
+        filename = dir_path+'/'+dir+'/'+file
         img = mpimg.imread(filename)
         data[flag,:] = np.reshape(img, -1)/255
         label[flag,int(dir)] = 1.0
@@ -71,15 +71,15 @@ while epoch < maxEpoch:
     print('Cost:',cost)
 
 #Testing
-dir_path = 'D:\\datasets\\MNIST\\test'
+dir_path = '/home/wzc/nas/home/Dataset/MNIST/test'
 file_ls = os.listdir(dir_path)
 xTesting = np.zeros((10000, 784), dtype=float)
 yTesting = np.zeros((10000, 10), dtype=float)
 flag = 0
 for dir in file_ls:
-    files = os.listdir(dir_path+'\\'+dir)
+    files = os.listdir(dir_path+'/'+dir)
     for file in files:
-        filename = dir_path+'\\'+dir+'\\'+file
+        filename = dir_path+'/'+dir+'/'+file
         img = mpimg.imread(filename)
         xTesting[flag,:] = np.reshape(img, -1)/255
         yTesting[flag,int(dir)] = 1.0
